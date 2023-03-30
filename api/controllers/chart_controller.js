@@ -16,12 +16,6 @@ router.get('/chart', async (req, res) => {
                 [Sequelize.fn('AVG', Sequelize.col('temp')), 'average_temp'],
             ],
             group: ['year', 'month'],
-            /* where: {
-                createdAt: {
-                    [Op.gte]: new Date('2022-01-01'),
-                    [Op.lt]: new Date('2023-01-01')
-                }
-            } */
         })
 
         const temp_hight = await db.Charts.findAll({
@@ -35,10 +29,6 @@ router.get('/chart', async (req, res) => {
                 temp: {
                     [Op.between]: [40, 100]
                 }
-                /* createdAt: {
-                    [Op.gte]: new Date('2022-01-01'),
-                    [Op.lt]: new Date('2023-01-01')
-                } */
             }
         })
 
@@ -53,10 +43,6 @@ router.get('/chart', async (req, res) => {
                 temp: {
                     [Op.between]: [0, 39]
                 }
-                /* createdAt: {
-                    [Op.gte]: new Date('2022-01-01'),
-                    [Op.lt]: new Date('2023-01-01')
-                } */
             }
         })
 
