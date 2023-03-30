@@ -14,4 +14,17 @@ router.get('/chart', async (req, res) => {
     }
 })
 
+router.post('/chart', async (req, res) => {
+    try {
+        const result = await db.Charts.findAll({
+            
+        })
+        if (await result) {
+            res.status(200).json(result)
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
 module.exports = router
