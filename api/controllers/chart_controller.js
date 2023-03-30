@@ -64,7 +64,8 @@ router.get('/test', async (req, res) => {
                 [Sequelize.literal("DATE_FORMAT(created_at, '%Y-%m-%d')"), 'month_year'],
                 [Sequelize.fn('MONTH', Sequelize.col('created_at')), 'month'],
                 [Sequelize.fn('YEAR', Sequelize.col('created_at')), 'year'],
-                [Sequelize.fn('AVG', Sequelize.col('kwh')), 'average_kwh']
+                [Sequelize.fn('AVG', Sequelize.col('kwh')), 'average_kwh'],
+                [Sequelize.fn('AVG', Sequelize.col('temp')), 'average_temp'],
             ],
             group: ['year', 'month'],
             /* where: {
