@@ -10,7 +10,7 @@ const data = {
       data: [10, 20, 30, 25, 40],
       borderColor: '#454545',
       backgroundColor: '#454545',
-      order: 1,
+      order: 3,
       yAxisID: 'y'
     },
     {
@@ -28,7 +28,7 @@ const data = {
       borderColor: '#E74C3C',
       backgroundColor: '#E74C3C',
       type: 'line',
-      order: 0,
+      order: 1,
       yAxisID: 'y1'
     },
     {
@@ -37,7 +37,7 @@ const data = {
       borderColor: '#F4D03F',
       backgroundColor: '#F4D03F',
       type: 'line',
-      order: 0,
+      order: 2,
       yAxisID: 'y1'
     }
   ]
