@@ -19,49 +19,6 @@ export class HomeComponent {
   avg_temp_hight: any = []
   avg_temp_low: any = []
 
-  data = {
-    labels: this.month,
-    datasets: [
-      {
-        label: 'Avg kWh',
-        data: [10, 20, 30, 25, 40],
-        borderColor: '#454545',
-        backgroundColor: '#454545',
-        order: 3,
-        yAxisID: 'y'
-      },
-      {
-        label: 'Avg Low',
-        data: [2, 2, 4, 8, 50],
-        borderColor: '#5DADE2',
-        backgroundColor: '#5DADE2',
-        type: 'line',
-        order: 0,
-        yAxisID: 'y1'
-      },
-      {
-        label: 'Avg Hight',
-        data: [5, 7, 22, 25, 100],
-        borderColor: '#E74C3C',
-        backgroundColor: '#E74C3C',
-        type: 'line',
-        order: 1,
-        yAxisID: 'y1'
-      },
-      {
-        label: 'Avg',
-        data: [20, 34, 64, 33, 12],
-        borderColor: '#F4D03F',
-        backgroundColor: '#F4D03F',
-        type: 'line',
-        order: 2,
-        yAxisID: 'y1'
-      }
-    ]
-  }
-
- 
-
   constructor(private chartService: ChartService) {
     this.getChart()
   }
