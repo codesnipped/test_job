@@ -10,7 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       kwh: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DOUBLE
+      },
+      temp: {
+        type: Sequelize.DOUBLE
       },
       created_at: {
         allowNull: false,

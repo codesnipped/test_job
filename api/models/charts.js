@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Charts.init({
-    kwh: DataTypes.INTEGER
+    kwh: DataTypes.DOUBLE,
+    temp: DataTypes.DOUBLE
   }, {
     sequelize,
     modelName: 'Charts',
