@@ -8,16 +8,16 @@ const data = {
     {
       label: 'Avg kWh',
       data: [10, 20, 30, 25, 40],
-      borderColor: '',
-      backgroundColor: '',
+      borderColor: '#2C3E50',
+      backgroundColor: '#2C3E50',
       order: 1,
       yAxisID: 'y'
     },
     {
       label: 'Avg Low',
       data: [2, 2, 4, 8, 50],
-      borderColor: '',
-      backgroundColor: '',
+      borderColor: '#5DADE2',
+      backgroundColor: '#5DADE2',
       type: 'line',
       order: 0,
       yAxisID: 'y1'
@@ -25,8 +25,8 @@ const data = {
     {
       label: 'Avg Hight',
       data: [5, 7, 22, 25, 100],
-      borderColor: '',
-      backgroundColor: '',
+      borderColor: '#E74C3C',
+      backgroundColor: '#E74C3C',
       type: 'line',
       order: 0,
       yAxisID: 'y1'
@@ -34,8 +34,8 @@ const data = {
     {
       label: 'Avg',
       data: [20, 34, 64, 33, 12],
-      borderColor: '',
-      backgroundColor: '',
+      borderColor: '#F4D03F',
+      backgroundColor: '#F4D03F',
       type: 'line',
       order: 0,
       yAxisID: 'y1'
