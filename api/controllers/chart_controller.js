@@ -33,7 +33,7 @@ router.get('/chart', async (req, res) => {
             group: ['year', 'month'],
             where: {
                 temp: {
-                    [Op.between]: [70, 1000]
+                    [Op.between]: [40, 100]
                 }
                 /* createdAt: {
                     [Op.gte]: new Date('2022-01-01'),
@@ -51,7 +51,7 @@ router.get('/chart', async (req, res) => {
             group: ['year', 'month'],
             where: {
                 temp: {
-                    [Op.between]: [0, 69]
+                    [Op.between]: [0, 39]
                 }
                 /* createdAt: {
                     [Op.gte]: new Date('2022-01-01'),
@@ -122,7 +122,7 @@ router.post('/chart', async (req, res) => {
             group: ['year', 'month'],
             where: {
                 temp: {
-                    [Op.between]: [70, 1000]
+                    [Op.between]: [40, 100]
                 },
                 created_at: {
                     [Op.between]: [req.body.start, req.body.end]
@@ -139,7 +139,7 @@ router.post('/chart', async (req, res) => {
             group: ['year', 'month'],
             where: {
                 temp: {
-                    [Op.between]: [0, 69]
+                    [Op.between]: [0, 39]
                 },
                 created_at: {
                     [Op.between]: [req.body.start, req.body.end]
@@ -276,24 +276,43 @@ router.get('/test', async (req, res) => {
 router.get('/mockup', async (req, res) => {
     try {
         const now = new Date();
-        let month_befor = date.addDays(now, -365);
+        month_befor = date.addDays(now, -365);
 
         data = []
         created_at = ''
+        t = 0
         for (let i = 0; i < 8640; i++) {
-            let kwh = Number((Math.random() * 50).toFixed(2))
-            let temp = Number(kwh) * 2
-
-            if (created_at == null){
-                created_at = month_befor
+            let temp
+            let kwh
+            if((t/2 != 1)){
+                kwh = Number((Math.random() * 40).toFixed(2))
+                temp = (Number(kwh) * 2).toFixed(2)
             }else{
-                month_cal = date.addHours(month_befor, +1)
-                created_at = date.format(month_cal, 'YYYY-MM-DD HH:mm:s');
+                kwh = Number((Math.random() * 70).toFixed(2))
+                temp = (Number(kwh) / 2).toFixed(2)
             }
+            t = t+1
+
+            month_cal = date.addHours(month_befor, +1)
+            created_at = date.format(month_cal, 'YYYY-MM-DD HH:mm:s');
             month_befor = date.addHours(month_befor, +1)
             
-            data.push({ kwh: kwh, temp: temp, created_at: created_at })
+            data.push({ kwh: kwh, temp: temp, createdAt: created_at })
         }
+
+        await db.Charts.bulkCreate(data)
+
+        /* const result_get = await db.Charts.findAll({
+            attributes: ['id','created_at'],
+        })
+        result_get.forEach((element, index, array) => {
+            month_cal = date.addHours(month_befor, +1)
+            created_at = date.format(month_cal, 'YYYY-MM-DD HH:mm:s');
+            month_befor = date.addHours(month_befor, +1)
+
+            data.push({ kwh: kwh, temp: temp, created_at: created_at })
+        }); */
+
         res.status(200).json(data)
 
     } catch (error) {
