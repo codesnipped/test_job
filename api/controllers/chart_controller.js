@@ -17,7 +17,13 @@ router.get('/chart', async (req, res) => {
 router.post('/chart', async (req, res) => {
     try {
         const result = await db.Charts.findAll({
-            
+            where: {
+                [Op.or]: [{
+                    created_at: {
+                        [Op.between]: [req.body.start, req.body.end]
+                    }
+                }]
+            }
         })
         if (await result) {
             res.status(200).json(result)
