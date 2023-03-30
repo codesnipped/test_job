@@ -15,7 +15,25 @@ const data = {
     },
     {
       label: 'Avg Low',
+      data: [2, 2, 4, 8, 50],
+      borderColor: '',
+      backgroundColor: '',
+      type: 'line',
+      order: 0,
+      yAxisID: 'y1'
+    },
+    {
+      label: 'Avg Hight',
       data: [5, 7, 22, 25, 100],
+      borderColor: '',
+      backgroundColor: '',
+      type: 'line',
+      order: 0,
+      yAxisID: 'y1'
+    },
+    {
+      label: 'Avg',
+      data: [20, 34, 64, 33, 12],
       borderColor: '',
       backgroundColor: '',
       type: 'line',
