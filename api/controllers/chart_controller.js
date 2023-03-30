@@ -28,18 +28,14 @@ router.post('/chart', async (req, res) => {
         })
 
         month = []
-        avgKwh = []
         month_check = null
+        avgKwh = []
+        avgKwh_check = null
         result.forEach(async (element, index, array) => {
             if (String(month_check) != String(date.format(element.dataValues.createdAt, 'YYYY/MM'))){
                 month_check = String(date.format(element.dataValues.createdAt, 'YYYY/MM'))
                 month.push(date.format(element.dataValues.createdAt, 'YYYY/MM'))
             }
-
-
-            //console.log(element.dataValues.createdAt);
-            //
-            //avgKwh
         });
 
         console.log(month);
