@@ -40,8 +40,8 @@ router.post('/chart', async (req, res) => {
 
         data_befor = []
         result.forEach(async (element, index, array) => {
-            data_befor.push({ 
-                month: date.format(element.dataValues.createdAt, 'MMM YYYY'), 
+            data_befor.push({
+                month: date.format(element.dataValues.createdAt, 'MMM YYYY'),
                 kwh_data: element.dataValues.kwh,
                 temp_data: element.dataValues.temp
             })
@@ -61,6 +61,7 @@ router.get('/test', async (req, res) => {
 
         const result = await db.Charts.findAll({
             attributes: [
+                [Sequelize.literal("DATE_FORMAT(created_at, '%Y-%m-%d')"), 'month_year'],
                 [Sequelize.fn('MONTH', Sequelize.col('created_at')), 'month'],
                 [Sequelize.fn('YEAR', Sequelize.col('created_at')), 'year'],
                 [Sequelize.fn('AVG', Sequelize.col('kwh')), 'average_kwh']
