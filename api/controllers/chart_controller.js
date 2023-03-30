@@ -260,12 +260,12 @@ router.get('/test', async (req, res) => {
 
         if (await result) {
             //res.status(200).json({ main: result, temp_hight: temp_hight, temp_low: temp_low })
-            res.status(200).json({ 
-                month: month, 
-                avg_kwh: avg_kwh, 
-                avg_temp: avg_temp, 
-                avg_temp_hight: avg_temp_hight, 
-                avg_temp_low: avg_temp_low 
+            res.status(200).json({
+                month: month,
+                avg_kwh: avg_kwh,
+                avg_temp: avg_temp,
+                avg_temp_hight: avg_temp_hight,
+                avg_temp_low: avg_temp_low
             })
         }
     } catch (error) {
@@ -275,6 +275,26 @@ router.get('/test', async (req, res) => {
 
 router.get('/mockup', async (req, res) => {
     try {
+        const now = new Date();
+        let month_befor = date.addDays(now, -365);
+
+        data = []
+        created_at = ''
+        for (let i = 0; i < 8640; i++) {
+            let kwh = Number((Math.random() * 50).toFixed(2))
+            let temp = Number(kwh) * 2
+
+            if (created_at == null){
+                created_at = month_befor
+            }else{
+                month_cal = date.addHours(month_befor, +1)
+                created_at = date.format(month_cal, 'YYYY-MM-DD HH:mm:s');
+            }
+            month_befor = date.addHours(month_befor, +1)
+            
+            data.push({ kwh: kwh, temp: temp, created_at: created_at })
+        }
+        res.status(200).json(data)
 
     } catch (error) {
         res.status(500).json({ message: error.message })

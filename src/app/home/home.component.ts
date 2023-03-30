@@ -26,6 +26,8 @@ export class HomeComponent {
   getChart() {
     this.chartService.getChart().subscribe({
       next: async (res) => {
+        console.log(res.avg_temp_hight);
+        
         this.month = await res.month
         this.avg_kwh = await res.avg_kwh
         this.avg_temp = await res.avg_temp
