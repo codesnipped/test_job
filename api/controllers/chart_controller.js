@@ -56,4 +56,32 @@ router.post('/chart', async (req, res) => {
     }
 })
 
+router.get('/test', async (req, res) => {
+    try {
+
+        const result = await db.Charts.findAll({
+            attributes: [
+                [Sequelize.fn('MONTH', Sequelize.col('created_at')), 'month'],
+                [Sequelize.fn('YEAR', Sequelize.col('created_at')), 'year'],
+                [Sequelize.fn('AVG', Sequelize.col('kwh')), 'average_kwh']
+            ],
+            group: ['year', 'month'],
+            /* where: {
+                createdAt: {
+                    [Op.gte]: new Date('2022-01-01'),
+                    [Op.lt]: new Date('2023-01-01')
+                }
+            } */
+        })
+
+        console.log(result);
+
+        if (await result) {
+            res.status(200).json(result)
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
 module.exports = router
