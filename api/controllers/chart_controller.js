@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../models')
 const { Op, Sequelize } = require("sequelize");
+const date = require('date-and-time');
 
 router.get('/chart', async (req, res) => {
     try {
@@ -28,15 +29,20 @@ router.post('/chart', async (req, res) => {
 
         month = []
         avgKwh = []
-        result.forEach((element, index, array) => {
-            let month = null
-            if (month != element.dataValues.createdAt){
-                month.push(element.dataValues.createdAt)
+        month_check = null
+        result.forEach(async (element, index, array) => {
+            if (String(month_check) != String(date.format(element.dataValues.createdAt, 'YYYY/MM'))){
+                month_check = String(date.format(element.dataValues.createdAt, 'YYYY/MM'))
+                month.push(date.format(element.dataValues.createdAt, 'YYYY/MM'))
             }
-            console.log(element.dataValues.createdAt);
+
+
+            //console.log(element.dataValues.createdAt);
             //
             //avgKwh
         });
+
+        console.log(month);
 
 
 
