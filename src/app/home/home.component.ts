@@ -56,17 +56,20 @@ export class HomeComponent {
   kwh: any = []
   temp: any = []
 
-  constructor(private chartService: ChartService){
+  constructor(private chartService: ChartService) {
     this.getChart()
   }
 
-  getChart(){
+  getChart() {
     this.chartService.getChart().subscribe({
-      next:(res)=>{
-        console.log(res);
+      next: (res) => {
+
         this.lineChartMethod(data)
       }
     })
+  }
+  update(array: any, index: any, newValue: any) {
+    array[index] = newValue;
   }
 
   lineChartMethod(datasets: any) {
