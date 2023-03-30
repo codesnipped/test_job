@@ -10,8 +10,8 @@ export class ChartService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getChart(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`chart`);
+  getChart(): Observable<any> {
+    return this.httpClient.get<any>(`chart`);
   }
   
 }
