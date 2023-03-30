@@ -115,13 +115,13 @@ router.get('/test', async (req, res) => {
         /* จัดระเบียบ */
         month = []
         avg_kwh = []
-        avg_tem = []
+        avg_temp = []
         avg_temp_hight = []
         avg_temp_low = []
         result.forEach((element, index, array) => {
             month.push(date.format(element.createdAt, 'MMM YYYY'))
             avg_kwh.push(Number(element.dataValues.average_kwh.toFixed(2)))
-            avg_tem.push(Number(element.dataValues.average_temp.toFixed(2)))
+            avg_temp.push(Number(element.dataValues.average_temp.toFixed(2)))
         });
         temp_hight.forEach((element, index, array) => {
             avg_temp_hight.push(Number(element.dataValues.average_temp_hight.toFixed(2)))
@@ -137,7 +137,7 @@ router.get('/test', async (req, res) => {
             res.status(200).json({ 
                 month: month, 
                 avg_kwh: avg_kwh, 
-                avg_tem: avg_tem, 
+                avg_temp: avg_temp, 
                 avg_temp_hight: avg_temp_hight, 
                 avg_temp_low: avg_temp_low 
             })
