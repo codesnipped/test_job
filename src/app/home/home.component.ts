@@ -8,8 +8,8 @@ const data = {
     {
       label: 'Avg kWh',
       data: [10, 20, 30, 25, 40],
-      borderColor: '#2C3E50',
-      backgroundColor: '#2C3E50',
+      borderColor: '#454545',
+      backgroundColor: '#454545',
       order: 1,
       yAxisID: 'y'
     },
