@@ -25,8 +25,23 @@ router.post('/chart', async (req, res) => {
                 }]
             }
         })
+
+        month = []
+        avgKwh = []
+        result.forEach((element, index, array) => {
+            let month = null
+            if (month != element.dataValues.createdAt){
+                month.push(element.dataValues.createdAt)
+            }
+            console.log(element.dataValues.createdAt);
+            //
+            //avgKwh
+        });
+
+
+
         if (await result) {
-            res.status(200).json(result)
+            res.status(200).json(data)
         }
     } catch (error) {
         res.status(500).json({ message: error.message })
