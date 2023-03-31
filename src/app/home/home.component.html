@@ -19,9 +19,9 @@
                             <div *ngIf="f['end'].errors['required']">required!</div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
-                        <button style="margin-right: 5px;" type="submit" class="btn btn-dark mt-4">Apply</button>
-                        <button (click)="reset()" type="button" class="btn btn-light mt-4">Reset</button>
+                    <div class="col-lg-6">
+                        <button style="margin-right: 5px;" type="submit" class="btn btn-dark mt-4"><i class="fa-regular fa-circle-check"></i> Apply</button>
+                        <button (click)="reset()" type="button" class="btn btn-light mt-4"><i class="fa-solid fa-rotate"></i> Reset</button>
                     </div>
                 </div>
             </form>
