@@ -24,6 +24,11 @@ export class HomeComponent {
     this.getChart()
   }
 
+  async reset(){
+    await this.dataChart.destroy();
+    this.getChart()
+  }
+
   getChart() {
     this.chartService.getChart().subscribe({
       next: async (res) => {
