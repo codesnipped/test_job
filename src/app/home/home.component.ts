@@ -48,11 +48,11 @@ export class HomeComponent {
     return this.frm.controls;
   }
   getPeriod(){
-    this.dataChart.destroy();
     this.submitted = true;
     if (this.frm.invalid) {
       return;
     }
+    this.dataChart.destroy();
     this.chartService.getPeriod(this.frm.value).subscribe({
       next:async (res)=>{
         this.month = await res.month
