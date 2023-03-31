@@ -130,12 +130,19 @@ export class HomeComponent {
             type: 'linear',
             display: true,
             position: 'left',
+            title: {
+              display: true,
+              text: 'Avg kWh Usage'
+            }
           },
           y1: {
             type: 'linear',
             display: true,
             position: 'right',
-
+            title: {
+              display: true,
+              text: 'Avg Temperature'
+            },
             // grid line settings
             grid: {
               drawOnChartArea: false, // only want the grid lines for one axis to show up
