@@ -13,7 +13,7 @@ const options = {
 };
 
 const corsOptions = {
-    origin: ['http://localhost:4200', 'http://localhost', 'https://gigaalbum.com', 'https://www.gigaalbum.com'],
+    origin: ['http://localhost:4200', 'http://localhost', 'https://test.codesnipped.com'],
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
