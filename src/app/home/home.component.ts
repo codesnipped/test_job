@@ -117,7 +117,7 @@ export class HomeComponent {
           },
           title: {
             display: true,
-            text: 'ทดสอบสมัครงาน'
+            text: 'kWh history'
           }
         },
         scales: {

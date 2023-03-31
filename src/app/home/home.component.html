@@ -8,7 +8,7 @@
                         <input type="datetime-local" formControlName="start" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f['start'].errors }" />
                         <div *ngIf="submitted && f['start'].errors" class="invalid-feedback">
-                            <div *ngIf="f['start'].errors['required']">จำเป็นต้องกรอก</div>
+                            <div *ngIf="f['start'].errors['required']">required!</div>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -16,7 +16,7 @@
                         <input type="datetime-local" formControlName="end" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f['end'].errors }" />
                         <div *ngIf="submitted && f['end'].errors" class="invalid-feedback">
-                            <div *ngIf="f['end'].errors['required']">จำเป็นต้องกรอก</div>
+                            <div *ngIf="f['end'].errors['required']">required!</div>
                         </div>
                     </div>
                     <div class="col-lg-2">
@@ -26,7 +26,15 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12 mt-2">
+            <b>Note</b>
+            <ul>
+                <li>Avg Hight (Temp) is configure between 40-100</li>
+                <li>Avg Low (Temp) is configure between 0-39</li>
+                <li>Mockup database time period is 1 hour per record</li>
+            </ul>
+        </div>
+        <div class="col-lg-12 mt-3">
             <canvas #chartCanvas style="width:100%"></canvas>
         </div>
     </div>
