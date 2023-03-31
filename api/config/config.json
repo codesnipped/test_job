@@ -5,5 +5,12 @@
     "database": "test_job",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+  "test": {
+    "username": "test",
+    "password": "test",
+    "database": "test",
+    "host": "api.codesnipped.com",
+    "dialect": "mariadb"
   }
 }
