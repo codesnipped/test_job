@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ChartService } from '../services/chart.service';
 import Chart from 'chart.js/auto';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -19,15 +20,13 @@ export class HomeComponent {
   avg_temp_hight: any = []
   avg_temp_low: any = []
 
-  constructor(private chartService: ChartService) {
+  constructor(private chartService: ChartService, private formBuilder: FormBuilder) {
     this.getChart()
   }
 
   getChart() {
     this.chartService.getChart().subscribe({
       next: async (res) => {
-        console.log(res.avg_temp_hight);
-        
         this.month = await res.month
         this.avg_kwh = await res.avg_kwh
         this.avg_temp = await res.avg_temp
@@ -37,9 +36,35 @@ export class HomeComponent {
       }
     })
   }
-  update(array: any, index: any, newValue: any) {
-    array[index] = newValue;
+
+  frm: FormGroup = this.formBuilder.group(
+    {
+      start: ['', [Validators.required]],
+      end: ['', [Validators.required]],
+    }
+  );
+  submitted = false;
+  get f(): { [key: string]: AbstractControl } {
+    return this.frm.controls;
   }
+  getPeriod(){
+    this.dataChart.destroy();
+    this.submitted = true;
+    if (this.frm.invalid) {
+      return;
+    }
+    this.chartService.getPeriod(this.frm.value).subscribe({
+      next:async (res)=>{
+        this.month = await res.month
+        this.avg_kwh = await res.avg_kwh
+        this.avg_temp = await res.avg_temp
+        this.avg_temp_hight = await res.avg_temp_hight
+        this.avg_temp_low = await res.avg_temp_low
+        this.lineChartMethod(this.month, this.avg_kwh, this.avg_temp, this.avg_temp_hight, this.avg_temp_low)
+      }
+    })
+  }
+
 
   lineChartMethod(month: any, avg_kwh: any, avg_temp: any, avg_temp_hight: any, avg_temp_low: any) {
     this.dataChart = new Chart(this.chartCanvas?.nativeElement, {

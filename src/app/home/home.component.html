@@ -1,17 +1,30 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <div class="row">
-                <div class="col-lg-3">
-                    FROM: <input class="form-control" type="datetime-local">
+            <form [formGroup]="frm" (ngSubmit)="getPeriod()">
+                <div class="row">
+                    <div class="col-lg-3">
+                        FROM:
+                        <input type="datetime-local" formControlName="start" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['start'].errors }" />
+                        <div *ngIf="submitted && f['start'].errors" class="invalid-feedback">
+                            <div *ngIf="f['start'].errors['required']">จำเป็นต้องกรอก</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        TO: 
+                        <input type="datetime-local" formControlName="end" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['end'].errors }" />
+                        <div *ngIf="submitted && f['end'].errors" class="invalid-feedback">
+                            <div *ngIf="f['end'].errors['required']">จำเป็นต้องกรอก</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <button style="margin-right: 5px;" type="submit" class="btn btn-dark mt-4">Apply</button>
+                        <button type="submit" class="btn btn-light mt-4">Reset</button>
+                    </div>
                 </div>
-                <div class="col-lg-3">
-                    TO: <input class="form-control" type="datetime-local">
-                </div>
-                <div class="col-lg-2">
-                    <button type="button" class="btn btn-dark mt-4">Search</button>
-                </div>
-            </div>
+            </form>
         </div>
         <div class="col-lg-12">
             <canvas #chartCanvas style="width:100%"></canvas>

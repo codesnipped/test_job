@@ -13,5 +13,9 @@ export class ChartService {
   getChart(): Observable<any> {
     return this.httpClient.get<any>(`chart`);
   }
+
+  getPeriod(frm: any): Observable<any> {
+    return this.httpClient.post<any>(`chart`, frm);
+  }
   
 }
