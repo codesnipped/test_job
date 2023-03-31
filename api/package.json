@@ -7,7 +7,7 @@
     "dev": "NODE_ENV=development nodemon app.js",
     "migrate-dev": "npx sequelize db:migrate --env=development",
     "seed-dev": "npx sequelize db:seed:all --env=development",
-    "test": "NODE_ENV=test nodemon app.js",
+    "test": "pm2 start ecosystem.config.js --env test",
     "migrate-test": "npx sequelize db:migrate --env=test",
     "seed-test": "npx sequelize db:seed:all --env=test"
   },
