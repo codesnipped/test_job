@@ -7,9 +7,9 @@ const app = express()
 require("dotenv").config();
 
 const options = {
-    key: fs.readFileSync('cert/privkey1.pem'),
-    cert: fs.readFileSync('cert/cert1.pem'),
-    csr: fs.readFileSync('cert/fullchain1.pem'),
+    key: fs.readFileSync('cert/privkey.pem'),
+    cert: fs.readFileSync('cert/cert.pem'),
+    csr: fs.readFileSync('cert/fullchain.pem'),
 };
 
 const corsOptions = {
@@ -30,8 +30,8 @@ var httpServer = http.createServer(app);
 var httpsServer = https.createServer(options, app);
 
 const PORT = process.env.PORT || 15000
-httpServer.listen(PORT, () => {
-    const env = `${process.env.NODE_ENV || 'development'}`
+httpsServer.listen(PORT, () => {
+    const env = `${process.env.NODE_ENV || 'test'}`
     console.log(`App listening on port ${PORT}`)
     console.log(`App listening on env ${env}`)
     console.log(`Press Ctrl+C to quit.`)
