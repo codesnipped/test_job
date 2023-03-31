@@ -19,8 +19,8 @@ export class RestInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const url = `http://localhost:15000/api/${request.url}`;
-    // const url = `https://api.gigaalbum.com:30000/api/${request.url}`;
+    // const url = `http://localhost:15000/api/${request.url}`;
+    const url = `https://api.codesnipped.com:15000/api/${request.url}`;
     const urlReq = request.clone({
       url,
       headers: new HttpHeaders({
